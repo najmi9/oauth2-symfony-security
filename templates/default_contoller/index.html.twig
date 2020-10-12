@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login page{% endblock %}
+
+
+{% block body %}
+
+<div class="card px-5 mx-5">
+    <h3 class="text-center text-secondary bg-light text-italic text-bold p-2 mt-2">
+    	Welcome to login page
+    </h3>
+    <div class="text-center">
+        <h2>
+        	<i class="fad fa-github"></i>
+    		<a href="{{ path("github") }}">connect via github </a>
+    	</h2>
+
+     	<h2>
+     		<i class="fad fa-google"></i>
+    		<a href="{{ path("google") }}" >connect via google </a>
+    	</h2>
+
+   		 <h2>
+   		 	<i class="fad fa-facebook"></i>
+        	<a href="{{ path("facebook") }}">connect via facbook </a>
+    	</h2>
+    </div>
+    <div class="bg-light m-5 p-5">
+    <form>
+       <div class="form-group">
+        	<input type="" class="form-control" name="" placeholder="username">
+       </div>
+        <div class="form-group">
+        	<input type="" class="form-control" name="" placeholder="password">
+       </div>
+        <div class="form-group">
+        	<button class="btn btn-outline-success w-100" type="submit">
+        		Login !
+        	</button>
+       </div>
+    </form>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+
+
+{% endblock %}

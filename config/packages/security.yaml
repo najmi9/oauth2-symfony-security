@@ -1,0 +1,19 @@
+security:
+    providers:
+        app_user_provider:
+            id: App\Security\UserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            lazy: true
+            guard:
+                authenticators:
+                    - App\Security\GithubAuthenticator
+            stateless: true
+
+    access_control:
+         - { path: ^/user/profile, roles: ROLE_USER }
