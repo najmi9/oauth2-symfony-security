@@ -11,18 +11,17 @@ class User implements UserInterface
 
     private $roles = [];
 
- function __construct(array $data=[])
- {   
-    if (isset($data['login'])) {
-        $this->username = $data['login'];
-     $this->avatar = $data['avatar_url'];
-    }else{
-     $this->username = $data['name'];
-     $this->avatar = $data['picture'];   
+    function __construct(array $data=[])
+    {   
+        if (isset($data['login'])) {
+            $this->username = $data['login'];
+            $this->avatar = $data['avatar_url'];
+        }else{
+            $this->username = $data['name'];
+            $this->avatar = $data['picture'];   
+        }   
     }
-     
- }
-
+    
     /**
      * A visual identifier that represents this user.
      *
@@ -32,6 +31,7 @@ class User implements UserInterface
     {
        return $this->avatar;
     }
+
     public function getUsername(): string
     {
         return (string) $this->username;

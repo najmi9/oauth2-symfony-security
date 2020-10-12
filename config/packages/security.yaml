@@ -12,7 +12,7 @@ security:
             lazy: true
             guard:
                 authenticators:
-                    - App\Security\GithubAuthenticator
+                    - App\Security\Oauth2Authenticator
             stateless: true
 
     access_control:

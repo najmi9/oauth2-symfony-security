@@ -10,10 +10,10 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use App\Services\ProviderService;
 
-class GithubAuthenticator extends AbstractGuardAuthenticator
+class Oauth2Authenticator extends AbstractGuardAuthenticator
 {   
-
     private $provider;
+
     function __construct(ProviderService $provider)
     {
         $this->provider = $provider;
@@ -21,9 +21,7 @@ class GithubAuthenticator extends AbstractGuardAuthenticator
 
     public function supports(Request $request)
     {
-
        return $request->query->get('code');
-
     }
 
     public function getCredentials(Request $request)

@@ -23,7 +23,7 @@ class ProvidersController extends AbstractController
     public function github(UrlGeneratorInterface $generator): Response
     {    
         $url = $generator->generate("user",[], UrlGeneratorInterface::ABSOLUTE_URL); 
-        return new RedirectResponse("http://github.com/login/oauth/authorize?client_id=".$this->clientId."&redirect_uri=".$url);
+        return new RedirectResponse("http://github.com/login/oauth/authorize?client_id=".$this->clientId."&redirect_uri=".$url." &state=github");
     }
 
     /**
