@@ -22,7 +22,7 @@ security:
                     - App\Security\Oauth2Authenticator
                     - App\Security\AppLoginAuthenticator
                 entry_point: App\Security\AppLoginAuthenticator
-            stateless: true
+            stateless: false
             logout:
                 path: app_logout
                 # where to redirect after logout

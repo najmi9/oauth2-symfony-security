@@ -79,6 +79,7 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator implements Pa
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
@@ -96,7 +97,7 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator implements Pa
             return new RedirectResponse($targetPath);
         }
 
-       return new RedirectResponse($this->urlGenerator->generate('user'));
+       return new RedirectResponse($this->urlGenerator->generate('default_controller'));
         #throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
