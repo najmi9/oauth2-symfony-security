@@ -22,7 +22,7 @@ class ProviderService
 		$this->urlGenerator = $urlGenerator;
 	}
 
-	public function loadUser(array $credantials): User
+	public function loadUser(array $credantials)
 	{   
         $code = $credantials['code'];
         $state = $credantials['state'];
@@ -37,14 +37,15 @@ class ProviderService
 		 	]   
 		    ]);
 		    $token = $response->toArray()['access_token'];
-     		$url =sprintf("graph.facebook.com/2000/accounts?
-     		access_token=%s", $token);
+     		$url =sprintf("https://graph.facebook.com/me/accounts?access_token=%s", $token);
       		$response = $this->httpClient->request("GET", $url, [
 		 		"headers"=>[
 		 			"Accept"=>"application/json"
 		 		]          
 		 	]);
-     		dd($response->toArray());
+		 	$data = $response->toArray();
+		 	$data['picture'] = "";
+     		return new User($data);
         }
 		//---------Github------------------------------------------
         if ($state =="github") {
@@ -55,6 +56,10 @@ class ProviderService
 		 			"Accept"=>"application/json"
 		 		] 
 		 	]);
+		 	
+		 	if (!isset($response->toArray()['access_token'])) {
+		 		throw new \Exception("The code passed is incorrect or expired", 1);	
+		 	}
 		 	$token = $response->toArray()['access_token'];
 		 	$userInfo = $this->httpClient->request("GET", 
 		 		"https://api.github.com/user",
@@ -72,9 +77,11 @@ class ProviderService
 	 		$url = sprintf("https://oauth2.googleapis.com/token?client_id=%s&client_secret=%s&code=%s&grant_type=authorization_code&redirect_uri=%s",$this->googleId, $this->googleSecret, $code, $redirectUri);
 		 	$response = $this->httpClient->request("POST", $url, [
 		 		"headers"=>[
+		 			"Content-Type"=>"application/x-www-form-urlencoded",
 		 			"Accept"=>"application/json"
-		 		] 
+		 		]
 		 	]);
+		 	dd($response->toArray());
 			$info = $response->toArray()['id_token'];
 	     	$jwt = explode('.', $info);
          	$data = json_decode(base64_decode($jwt[1]), true);

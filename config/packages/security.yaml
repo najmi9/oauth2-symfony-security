@@ -1,7 +1,14 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
     providers:
         app_user_provider:
-            id: App\Security\UserProvider
+            entity:
+                class: App\Entity\User
+                property: email
+        # used to reload user from session & other features (e.g. switch_user)
 
     firewalls:
         dev:
@@ -13,7 +20,13 @@ security:
             guard:
                 authenticators:
                     - App\Security\Oauth2Authenticator
+                    - App\Security\AppLoginAuthenticator
+                entry_point: App\Security\AppLoginAuthenticator
             stateless: true
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
     access_control:
          - { path: ^/user/profile, roles: ROLE_USER }

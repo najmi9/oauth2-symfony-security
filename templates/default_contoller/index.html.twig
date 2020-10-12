@@ -11,34 +11,21 @@
     </h3>
     <div class="text-center">
         <h2>
-        	<i class="fad fa-github"></i>
-    		<a href="{{ path("github") }}">connect via github </a>
+    		<a href="{{ path("github") }}">connect via Github </a>
     	</h2>
 
      	<h2>
-     		<i class="fad fa-google"></i>
-    		<a href="{{ path("google") }}" >connect via google </a>
+    		<a href="{{ path("google") }}" >connect via Google </a>
     	</h2>
 
    		 <h2>
-   		 	<i class="fad fa-facebook"></i>
-        	<a href="{{ path("facebook") }}">connect via facbook </a>
+        	<a href="{{ path("facebook") }}">connect via Facebook </a>
     	</h2>
     </div>
-    <div class="bg-light m-5 p-5">
-    <form>
-       <div class="form-group">
-        	<input type="" class="form-control" name="" placeholder="username">
-       </div>
-        <div class="form-group">
-        	<input type="" class="form-control" name="" placeholder="password">
-       </div>
-        <div class="form-group">
-        	<button class="btn btn-outline-success w-100" type="submit">
-        		Login !
-        	</button>
-       </div>
-    </form>
+    <div class="bg-light mx-5 p-5 text-center">
+         <a href="{{ path('app_login') }}"
+         class="btn btn-outline-primary" 
+         >Login with password and Email</a>
         
     </div>
 </div>
