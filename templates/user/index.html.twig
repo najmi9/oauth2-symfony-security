@@ -2,15 +2,15 @@
 
 {% block body %}
 <div class="p-5 m-5 bg-light">
-    <h1 class="text-center text-italic">
-    	Welcome to my website
-    </h1>
-    <h2 class="text-primary :text-center">
-      {{ app.user.username }}
-    </h2>
-    <a href=" {{ path('default_controller') }} " class="btn btn-link w-100"> back</a>
-    <div class="card">
-    	<img src="{{ app.user.avatar }}">
-    </div>
+  <h1 class="text-center text-italic">
+    Welcome to my website
+  </h1>
+  <h2 class="text-primary :text-center">
+    {{ app.user.username }}
+  </h2>
+  <a href=" {{ path('default_controller') }} " class="btn btn-link w-100"> back</a>
+  <div class="card">
+    <img src="{{ app.user.avatar }}">
+  </div>
 </div>
 {% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use App\Services\ProviderService;
 
 class Oauth2Authenticator extends AbstractGuardAuthenticator
-{   
+{
     private $provider;
 
     function __construct(ProviderService $provider)
@@ -22,14 +22,14 @@ class Oauth2Authenticator extends AbstractGuardAuthenticator
 
     public function supports(Request $request)
     {
-       return $request->query->get('code');
+        return $request->query->get('code');
     }
 
     public function getCredentials(Request $request)
     {
         return [
-        "code"=>$request->query->get('code'),
-        "state"=>$request->query->get('state')
+            "code" => $request->query->get('code'),
+            "state" => $request->query->get('state')
         ];
     }
 
@@ -40,7 +40,7 @@ class Oauth2Authenticator extends AbstractGuardAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-       return true;
+        return true;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
